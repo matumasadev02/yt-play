@@ -8,19 +8,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 </head>
 <body>
-    <video style="min-width: 100%;" controls id="video"></video>
-    <input type="url" id="url">
-    <button id="submit">SHOW!</button>
-    <a id="info">MORE INFO</a>
+    <div style="padding: 1rem;" class="container">
+        <video style="min-width: 100%;" controls id="video"></video>
+        <input style="margin: .5rem;" type="url" id="url">
+        <button style="margin: .5rem;" id="submit">SHOW!</button>
+        <a style="margin: .5rem;" id="info">MORE INFO</a>
+    </div>
     <script>
-        let url
+        let url;
         function getVideo (){
             url = document.getElementById("url").value;
             document.getElementById("video").src = `https://dev02-ydl-api.herokuapp.com/api/play?url=${url}`;
             document.getElementById("info").href = `https://dev02-ydl-api.herokuapp.com/api/info?url=${url}`;
         };
-        document.getElementById("url").addEventListener("onkeydown", (e)=>{
-            if(e.key === "Enter") {
+        document.getElementById("url").addEventListener("keypress", (e)=>{
+            if (e.key === "Enter") {
                 getVideo();
             }
         });
